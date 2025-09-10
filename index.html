@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <style>
+      
       #site_header_container {
         height: 7.5vh;
         width: 100vw;
@@ -20,10 +21,17 @@
         width: 100%;
         object-fit: contain;
       }
+      
+      nav ul { 
+        list-style: none; 
+        padding: 10px 10vw; 
+        margin: 20px 0px; 
+        display: flex;
+        justify-content: space-between;
+      }
   
       .menu_item {
         font: 300 20px "IBM Plex Serif";
-        margin: 20px;
       }
     </style>
   </head>
@@ -31,13 +39,36 @@
     <div id="site_header_container">
       <img id="site_header" src="jdc_title_img.svg" alt="jadendotcom"/>
     </div>
-    <nav id="menu">
-      <div class="menu_item">Home</div>
-      <div class="menu_item">About</div>
-      <div class="menu_item">Projects</div>
-      <div class="menu_item">Resume</div>
-      <div class="menu_item">Contact</div>
+    
+    <nav>
+      <ul>
+        <li class="menu_item" data-section="home">Home</li>
+        <li class="menu_item" data-section="about">About</li>
+        <li class="menu_item" data-section="projects">Projects</li>
+        <li class="menu_item" data-section="resume">Resume</li>
+        <li class="menu_item" data-section="contact">Contact</li>
+      </ul>
     </nav>
+    
+    <main>
+      
+      <section id="home" class="section">
+        <h1>HOME</h1>
+      </section>
+      
+      <section id="about" class="section">
+      </section>
+      
+      <section id="projects" class="section">
+      </section>
+      
+      <section id="resume" class="section">
+      </section>
+      
+      <section id="contact" class="section">
+      </section>
+      
+    </main>
 
     <script src="main.js"></script>
   </body>
