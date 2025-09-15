@@ -32,7 +32,37 @@
   
       .menu_item {
         font: 300 20px "IBM Plex Serif";
+        cursor: pointer;
+        display: inline-block;
+        padding: 0px 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
+      
+      .menu_item:hover {
+        background-color: #e2e2e2;
+      }
+      
+      .menu_item.active-nav { 
+        background-color: #d1d1d1;
+        font-weight: 500;
+      }
+      
+      main { 
+        padding: 20px; 
+      }
+      
+      .section {
+        display: none;
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: white;
+        border-radius: 8px;
+      }
+      
+      .section.active {
+        display: block;
+      }
+      
     </style>
   </head>
   <body>
@@ -57,19 +87,65 @@
       </section>
       
       <section id="about" class="section">
+        <h1>ABOUT</h1>
       </section>
       
       <section id="projects" class="section">
+        <h1>PROJECTS</h1>
       </section>
       
       <section id="resume" class="section">
+        <h1>RESUME</h1>
       </section>
       
       <section id="contact" class="section">
+        <h1>CONTACT</h1>
       </section>
       
     </main>
 
-    <script src="main.js"></script>
+    <script> 
+      const menuItems = document.querySelectorAll('.menu_item');
+      const sections = document.querySelectorAll('.section');
+
+      function activateSection(sectionId) {
+        sections.forEach(section => {   
+          section.classList.remove('active');
+        });
+
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+          targetSection.classList.add('active');
+        }
+
+        menuItems.forEach(item => {
+          if (item.dataset.section === sectionId) {
+            item.classList.add('active-nav'); 
+          } else {
+              item.classList.remove('active-nav');
+            }
+        });
+      }
+
+      menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const targetSectionId = item.dataset.section; 
+          window.history.pushState(null, '', `/${targetSectionId}`);
+          activateSection(targetSectionId); 
+        });
+      });
+
+      function handleInitialLoad() {
+        let currentPath = window.location.pathname.substring(1); 
+        if (currentPath === '' || currentPath === '/') {
+          currentPath = 'home';
+        }
+        activateSection(currentPath);
+      }
+
+      window.addEventListener('popstate', handleInitialLoad);
+
+      document.addEventListener('DOMContentLoaded', handleInitialLoad);
+    </script>
   </body>
 </html>
