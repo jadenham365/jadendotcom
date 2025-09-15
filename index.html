@@ -7,6 +7,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <style>
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+      }
       
       #site_header_container {
         height: 7.5vh;
@@ -14,6 +23,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding-top: 10px;
       }
       
       #site_header {
@@ -25,17 +35,19 @@
       nav ul { 
         list-style: none; 
         padding: 10px 10vw; 
-        margin: 20px 0px; 
+        margin: 0;
         display: flex;
         justify-content: space-between;
       }
   
       .menu_item {
-        font: 300 20px "IBM Plex Serif";
+        font: 300 clamp(12px, 2.5vw, 20px) "IBM Plex Serif";        
         cursor: pointer;
         display: inline-block;
-        padding: 0px 20px;
+        padding: 0px 2vw;
         transition: background-color 0.3s ease, color 0.3s ease;
+        border-radius: 10vw;
+        white-space: nowrap;
       }
       
       .menu_item:hover {
@@ -48,20 +60,28 @@
       }
       
       main { 
-        padding: 20px; 
+        margin: 0;
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+        background-color: #94b898;
       }
       
       .section {
         display: none;
-        padding: 20px;
-        border: 1px solid #ccc;
+        border: 1px solid black;
+        aspect-ratio: 4 / 3;
+        width: min(90vw, 100vh);
+        height: auto;
         background-color: white;
-        border-radius: 8px;
       }
       
       .section.active {
         display: block;
       }
+
+   
       
     </style>
   </head>
@@ -104,48 +124,6 @@
       
     </main>
 
-    <script> 
-      const menuItems = document.querySelectorAll('.menu_item');
-      const sections = document.querySelectorAll('.section');
-
-      function activateSection(sectionId) {
-        sections.forEach(section => {   
-          section.classList.remove('active');
-        });
-
-        const targetSection = document.getElementById(sectionId);
-        if (targetSection) {
-          targetSection.classList.add('active');
-        }
-
-        menuItems.forEach(item => {
-          if (item.dataset.section === sectionId) {
-            item.classList.add('active-nav'); 
-          } else {
-              item.classList.remove('active-nav');
-            }
-        });
-      }
-
-      menuItems.forEach(item => {
-        item.addEventListener('click', () => {
-          const targetSectionId = item.dataset.section; 
-          window.history.pushState(null, '', `/${targetSectionId}`);
-          activateSection(targetSectionId); 
-        });
-      });
-
-      function handleInitialLoad() {
-        let currentPath = window.location.pathname.substring(1); 
-        if (currentPath === '' || currentPath === '/') {
-          currentPath = 'home';
-        }
-        activateSection(currentPath);
-      }
-
-      window.addEventListener('popstate', handleInitialLoad);
-
-      document.addEventListener('DOMContentLoaded', handleInitialLoad);
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>
