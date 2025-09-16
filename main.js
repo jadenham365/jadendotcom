@@ -35,3 +35,34 @@ function handleHashChange() {
 window.addEventListener('hashchange', handleHashChange);
 
 document.addEventListener('DOMContentLoaded', handleHashChange);
+
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault(); 
+
+    const formData = new FormData(contactForm);
+    const statusMessage = 'Sending...';
+    formStatus.innerHTML = statusMessage;
+
+    const googleScriptURL = 'https://script.google.com/macros/s/AKfycbz6h5HHXGhVXQlNeJ6jDu9svOWBDih9ljwJ0SrdLI1Y95tHnB84r0GA2hFttspi2_tsDA/exec';
+
+    fetch(googleScriptURL, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.result === 'success') {
+            formStatus.innerHTML = 'Thank you! Your message has been sent.';
+            contactForm.reset();
+        } else {
+            throw new Error(data.error || 'Something went wrong.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        formStatus.innerHTML = 'Oops! There was a problem sending your message.';
+    });
+});
