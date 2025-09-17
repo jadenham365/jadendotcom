@@ -46,7 +46,7 @@ contactForm.addEventListener('submit', function(e) {
     const statusMessage = 'Sending...';
     formStatus.innerHTML = statusMessage;
 
-    const googleScriptURL = 'https://script.google.com/macros/s/AKfycbz6h5HHXGhVXQlNeJ6jDu9svOWBDih9ljwJ0SrdLI1Y95tHnB84r0GA2hFttspi2_tsDA/exec';
+    const googleScriptURL = 'https://script.google.com/macros/s/AKfycbxV1Wdjh2s4yk1NmZhnbU31PGawezSaxw379ws8efk0MoV9rqHUwxwvlTgLdWDmNoWh1g/exec';
 
     fetch(googleScriptURL, {
         method: 'POST',
