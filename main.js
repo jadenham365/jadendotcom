@@ -33,7 +33,7 @@ menuItems.forEach(item => {
 
 function updateBackground() {
     const hour = new Date().getHours();
-    const main = document.querySelector('main')
+    const main = document.querySelector('main');
 
     if (hour < 2) {
         main.style.backgroundImage = "url('images/background/11.png')";
@@ -48,7 +48,7 @@ function updateBackground() {
     } else if (hour < 12) {
         main.style.backgroundImage = "url('images/background/04.png')";
     } else if (hour < 14) {
-        main.style.backgroundImage = "url('images/background/05.png'')";
+        main.style.backgroundImage = "url('images/background/05.png')";
     } else if (hour < 16) {
         main.style.backgroundImage = "url('images/background/06.png')";
     } else if (hour < 18) {
@@ -62,7 +62,7 @@ function updateBackground() {
     } 
 }
 
-updateBackground(); 
+updateBackground();
 setInterval(updateBackground, 60000);
 
 /* --- CONTACT FORM --- */
