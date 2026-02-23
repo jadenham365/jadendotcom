@@ -36,29 +36,29 @@ function updateBackground() {
     const main = document.querySelector('main');
 
     if (hour < 2) {
-        main.style.backgroundImage = "url('images/background/11.png')";
+        main.style.setProperty('--bg-img', "url('images/background/11.png')");
     } else if (hour < 4) {
-        main.style.backgroundImage = "url('images/background/12.png')";
+        main.style.setProperty('--bg-img', "url('images/background/12.png')");
     } else if (hour < 6) {
-        main.style.backgroundImage = "url('images/background/01.png')";
+        main.style.setProperty('--bg-img', "url('images/background/01.png')");
     } else if (hour < 8) {
-        main.style.backgroundImage = "url('images/background/02.png')";
+        main.style.setProperty('--bg-img', "url('images/background/02.png')");
     } else if (hour < 10) {
-        main.style.backgroundImage = "url('images/background/03.png')";
+        main.style.setProperty('--bg-img', "url('images/background/03.png')");
     } else if (hour < 12) {
-        main.style.backgroundImage = "url('images/background/04.png')";
+        main.style.setProperty('--bg-img', "url('images/background/04.png')");
     } else if (hour < 14) {
-        main.style.backgroundImage = "url('images/background/05.png')";
+        main.style.setProperty('--bg-img', "url('images/background/05.png')");
     } else if (hour < 16) {
-        main.style.backgroundImage = "url('images/background/06.png')";
+        main.style.setProperty('--bg-img', "url('images/background/06.png')");
     } else if (hour < 18) {
-        main.style.backgroundImage = "url('images/background/07.png')";
+        main.style.setProperty('--bg-img', "url('images/background/07.png')");
     } else if (hour < 20) {
-        main.style.backgroundImage = "url('images/background/08.png')";
+        main.style.setProperty('--bg-img', "url('images/background/08.png')");
     } else if (hour < 22) {
-        main.style.backgroundImage = "url('images/background/09.png')";
+        main.style.setProperty('--bg-img', "url('images/background/09.png')");
     } else if (hour < 24) {
-        main.style.backgroundImage = "url('images/background/10.png')";
+        main.style.setProperty('--bg-img', "url('images/background/10.png')");
     } 
 }
 
@@ -69,29 +69,29 @@ function updateBackground() {
 //     console.log(second);
 
 //     if (second < 5) {
-//         main.style.backgroundImage = "url('images/background/11.png')";
+//         main.style.setProperty('--bg-img', "url('images/background/11.png')");
 //     } else if (second < 10) {
-//         main.style.backgroundImage = "url('images/background/12.png')";
+//         main.style.setProperty('--bg-img', "url('images/background/12.png')");
 //     } else if (second < 15) {
-//         main.style.backgroundImage = "url('images/background/01.png')";
+//         main.style.setProperty('--bg-img', "url('images/background/01.png')");
 //     } else if (second < 20) {
-//         main.style.backgroundImage = "url('images/background/02.png')";
+//         main.style.setProperty('--bg-img', "url('images/background/02.png')");
 //     } else if (second < 25) {
-//         main.style.backgroundImage = "url('images/background/03.png')";
+//         main.style.setProperty('--bg-img', "url('images/background/03.png')");
 //     } else if (second < 30) {
-//         main.style.backgroundImage = "url('images/background/04.png')";
+//         main.style.setProperty('--bg-img', "url('images/background/04.png')");
 //     } else if (second < 35) {
-//         main.style.backgroundImage = "url('images/background/05.png')";
+//         main.style.setProperty('--bg-img', "url('images/background/05.png')");
 //     } else if (second < 40) {
-//         main.style.backgroundImage = "url('images/background/06.png')";
+//         main.style.setProperty('--bg-img', "url('images/background/06.png')");
 //     } else if (second < 45) {
-//         main.style.backgroundImage = "url('images/background/07.png')";
+//         main.style.setProperty('--bg-img', "url('images/background/07.png')");
 //     } else if (second < 50) {
-//         main.style.backgroundImage = "url('images/background/08.png')";
+//         main.style.setProperty('--bg-img', "url('images/background/08.png')");
 //     } else if (second < 55) {
-//         main.style.backgroundImage = "url('images/background/09.png')";
+//         main.style.setProperty('--bg-img', "url('images/background/09.png')");
 //     } else if (second < 60) {
-//         main.style.backgroundImage = "url('images/background/10.png')";
+//         main.style.setProperty('--bg-img', "url('images/background/10.png')");
 //     } 
 // }
 
