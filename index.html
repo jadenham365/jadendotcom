@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>jadendotcom</title>
+    <link rel="icon" type="image/x-icon" href="images/site/jdc-ico.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -18,7 +19,7 @@
       }
       
       #site_header_container {
-        height: 6vh;
+        height: min(6vh, 6vw);
         width: 100vw;
         display: flex;
         justify-content: center;
@@ -80,13 +81,14 @@
         box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
         border-radius: 32px;
         padding: 20px;
-        overflow: scroll;
+        overflow: auto;
         container-type: inline-size;
       }
 
       p {
         font: 200 clamp(16px, 3cqi, 24px) "Roboto";
         line-height: 3.75cqi;
+        text-align: justify;
       }
       
       .section.active {
@@ -273,13 +275,37 @@
       details[open] summary {
         background-color: #d1d1d1;
       }
-      
+
+      .scrolling-container {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-top: 20px;
+        background-color: black;
+      }
+
+      .scrolling-text {
+        animation: scrollText 10s linear infinite;
+        display: inline-block;
+        padding-left: 100%; 
+        color: orange;
+      }
+
+      @keyframes scrollText {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-100%);
+        }
+      }
+
     </style>
   </head>
   <body>
 
     <div id="site_header_container">
-      <img id="site_header" src="jdc-title-img.svg" alt="jadendotcom"/>
+      <img id="site_header" src="images/site/jdc-title-img.svg" alt="jadendotcom"/>
     </div>
     
     <nav>
@@ -294,28 +320,26 @@
     <main>
       
       <section id="home" class="section">
-        <div class="projects-grid">
+        <div style="display: flex; justify-content: center;">
           <img src="images/home/jaden-profile-pic.jpg" 
             alt="A headshot of Jaden Hamilton." 
-            style="width: 100%; border-radius: 100%;">
-          <div style="grid-column: span 2;">
-            <p>
-              <b>Hiya! I'm Jaden Hamilton.</b> I received my B.A. from the University of Chicago in
-              Computer Science and Media Arts and Design, with a focus in <b>Human-Computer Interaction.</b>
-            </p>
-            <p>
-              I tend to spend more time looking at how a controller is built than actually playing the 
-              game. <b>I'm drawn to the <i>how</i> behind technology,</b> fascinated by the circuit boards, 
-              components, and code that make electronics tick.
-            </p>
-            <p>
-              I'm currently looking to transition these interests into a career in embedded software, 
-              where I can focus on building well-documented systems designed with the user's experience 
-              at the forefront. <b>Ultimately, I believe that good technology should be as intuitive as it is functional.</b>
-              <img src="images/home/wigglytuff.gif" alt="An animation of Wigglytuff, a Pokémon, walking." style="width: 20%; float: right;">
-            </p>
-          </div>
+            style="width: 25%; border-radius: 100%;">
         </div>
+        <p>
+          <b>Hiya! I'm Jaden Hamilton.</b> I received my B.A. from the University of Chicago in
+          Computer Science and Media Arts and Design, with a focus in <b>Human-Computer Interaction.</b>
+        </p>
+        <p>
+          I tend to spend more time looking at how a controller is built than actually playing the 
+          game. <b>I'm drawn to the <i>how</i> behind technology,</b> fascinated by the circuits, 
+          components, code, connections, and communities that make electronics tick.
+        </p>
+        <p>
+          I'm currently looking to transition these interests into a career in embedded software, 
+          where I can focus on building well-documented systems designed with the user's experience 
+          at the forefront. <b>Ultimately, I believe that good technology should be as intuitive as it is functional.</b>
+        </p>
+        <img src="images/home/wigglytuff.gif" alt="An animation of Wigglytuff, a Pokémon, walking." style="width: 10%; float: right;">
       </section>
       
       <section id="projects" class="section">
@@ -324,16 +348,17 @@
         <article class="project-card" id="hci-pcb">
           <div class="card-thumbnail" style="background-image: url('images/projects/thumbnails/hci-pcb.gif');">
             <div class="thumbnail-overlay">
-              <h3>HCI PCB</h3>
+              <h3>Interactive PCB</h3>
             </div>
           </div>
 
           <div class="card-details">
             <button class="back-btn" type="button">← Back to Projects</button>
-            
+            <div class="scrolling-container">
+              <span class="scrolling-text">WARNING: THIS ARTICLE IS STILL UNDER CONSTRUCTION</span>
+            </div>
             <div class="details-content">
-              <h2>Human-Computer Interaction PCB</h2>
-              <h3>Custom PCB for Interactive Haptic Device</h3>
+              <h2>Custom PCB for Interactive Haptic Device</h2>
               <div class="proj-img-grid">
                 <img src="images/projects/hci-pcb/pcb-front-with_screen.jpg" 
                   alt="The front of a custom circuit board in the shape of a circle. It has a circular screen in the middle." 
@@ -480,9 +505,11 @@
 
           <div class="card-details">
             <button class="back-btn" type="button">← Back to Projects</button>
+            <div class="scrolling-container">
+              <span class="scrolling-text">WARNING: THIS ARTICLE IS STILL UNDER CONSTRUCTION</span>
+            </div>
             <div class="details-content">
               <h2>Simon Says Game (plus MP3 player)</h2>
-              <p>Full project description for the project.</p>
             </div>
           </div>
         </article>
@@ -495,6 +522,9 @@
           </div>
           <div class="card-details">
             <button class="back-btn" type="button">← Back</button>
+            <div class="scrolling-container">
+              <span class="scrolling-text">WARNING: THIS ARTICLE IS STILL UNDER CONSTRUCTION</span>
+            </div>
             <h2>Valentine's Day LED Matrix</h2>
           </div>
         </article>
@@ -503,7 +533,33 @@
     </section>
       
       <section id="resume" class="section">
-        <h1>Resume</h1>
+        <div class="projects-grid">
+          <div style="grid-column: span 2;">
+            <h2>Education</h2>
+            <h3>The University of Chicago</h3>
+            <p>
+              <i>Bachelor of Arts in 
+              <a href="https://web.archive.org/web/20231021205033/http://collegecatalog.uchicago.edu/thecollege/computerscience" target="_blank">Computer Science</a>
+              and
+              <a href="https://web.archive.org/web/20240615051355/http://collegecatalog.uchicago.edu/thecollege/MediaArtsandDesign/" target="_blank">Media Arts and Design</a></i>, December 2025</p>
+          </div>
+          <img src="images/resume/uchicago-seal.png" alt="The seal for the University of Chicago." style="width: 100%;">
+          <div style="grid-column: span 3;">
+            <h2>Skills</h2>
+            <p>
+              <b>Programming & Software:</b> C, C++, Python, JavaScript, HTML, CSS, CLI, Git, GDB, 
+              Software Debugging
+            </p>
+            <p>
+              <b>Embedded & Hardware:</b> Microcontrollers, PCB Design, KiCad, Schematics, SMT/THT 
+              Soldering, Hardware Debugging, Multimeter, I2C, SPI, UART
+            </p>
+            <p>
+              <b>Design & Fabrication:</b> 3D Printers, Laser Cutters, CAD, Fusion 360, UI/UX Design,
+              Figma, Responsive Design, Adobe Creative Suite
+            </p>
+          </div>
+        </div>
       </section>
       
       <section id="contact" class="section">

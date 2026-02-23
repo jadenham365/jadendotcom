@@ -62,8 +62,44 @@ function updateBackground() {
     } 
 }
 
+// function updateBackgroundDemo() {
+//     let second = (new Date().getSeconds()) % 60;
+//     const main = document.querySelector('main');
+
+//     console.log(second);
+
+//     if (second < 5) {
+//         main.style.backgroundImage = "url('images/background/11.png')";
+//     } else if (second < 10) {
+//         main.style.backgroundImage = "url('images/background/12.png')";
+//     } else if (second < 15) {
+//         main.style.backgroundImage = "url('images/background/01.png')";
+//     } else if (second < 20) {
+//         main.style.backgroundImage = "url('images/background/02.png')";
+//     } else if (second < 25) {
+//         main.style.backgroundImage = "url('images/background/03.png')";
+//     } else if (second < 30) {
+//         main.style.backgroundImage = "url('images/background/04.png')";
+//     } else if (second < 35) {
+//         main.style.backgroundImage = "url('images/background/05.png')";
+//     } else if (second < 40) {
+//         main.style.backgroundImage = "url('images/background/06.png')";
+//     } else if (second < 45) {
+//         main.style.backgroundImage = "url('images/background/07.png')";
+//     } else if (second < 50) {
+//         main.style.backgroundImage = "url('images/background/08.png')";
+//     } else if (second < 55) {
+//         main.style.backgroundImage = "url('images/background/09.png')";
+//     } else if (second < 60) {
+//         main.style.backgroundImage = "url('images/background/10.png')";
+//     } 
+// }
+
 updateBackground();
 setInterval(updateBackground, 60000);
+
+// updateBackgroundDemo();
+// setInterval(updateBackgroundDemo, 1000);
 
 /* --- CONTACT FORM --- */
 
