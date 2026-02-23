@@ -2,6 +2,7 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jadendotcom</title>
     <link rel="icon" type="image/x-icon" href="images/site/jdc-ico.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,7 +102,7 @@
 
       p {
         font: 200 clamp(16px, 3cqi, 24px) "Roboto";
-        line-height: 3.75cqi;
+        line-height: 1.6;
         text-align: justify;
       }
       
@@ -343,14 +344,26 @@
           overflow: visible; 
         }
 
-        .projects-grid, .proj-img-grid {
-          grid-template-columns: 1fr; 
+        /* --- 1. Navigation Menu Font --- */
+        .menu_item {
+          font-size: 20px; 
+          padding: 5px 3vw;
         }
 
+        /* --- 2. Paragraph Font & Responsive Spacing --- */
         p {
-          font: 200 clamp(20px, 4cqi, 28px) "Roboto";
-          line-height: 7cqi;
+          font-size: 20px;
           text-align: justify;
+        }
+
+        /* --- 3 & 4. Larger H3s and Larger Card Margins --- */
+        .card-thumbnail h3 {
+          font-size: 2.5rem; 
+        }
+
+        .projects-grid, .proj-img-grid {
+          grid-template-columns: 1fr; 
+          gap: 40px; /* Increased from 20px for larger margins */
         }
 
         #headshot {
