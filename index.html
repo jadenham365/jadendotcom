@@ -90,7 +90,7 @@
         font-family: "Roboto";
         display: none;
         aspect-ratio: 4 / 3;
-        width: min(90vw, 90vh);
+        width: min(100vh, 90vw);
         height: auto;
         background-color: rgba(255, 255, 255, 0.5);
         box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
@@ -344,26 +344,27 @@
           overflow: visible; 
         }
 
-        /* --- 1. Navigation Menu Font --- */
+        .project-card.expanded {
+          aspect-ratio: auto;
+        }
+
         .menu_item {
           font-size: 20px; 
           padding: 5px 3vw;
         }
 
-        /* --- 2. Paragraph Font & Responsive Spacing --- */
         p {
           font-size: 20px;
           text-align: justify;
         }
 
-        /* --- 3 & 4. Larger H3s and Larger Card Margins --- */
         .card-thumbnail h3 {
           font-size: 2.5rem; 
         }
 
         .projects-grid, .proj-img-grid {
           grid-template-columns: 1fr; 
-          gap: 40px; /* Increased from 20px for larger margins */
+          gap: 40px; 
         }
 
         #headshot {
