@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jadendotcom</title>
-    <link rel="icon" type="image/png" sizes="320x320" href="images/site/jdc-ico.png">
+    <link rel="icon" type="image/png" sizes="432x432" href="images/site/jdc-ico.png">
     <link rel="apple-touch-icon" href="images/site/jdc-ico.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
       
       #site_header_container {
         position: relative;
-        height: 6vh;
+        height: min(6vh, 6vw);
         width: 100vw;
         display: flex;
         justify-content: center;
@@ -32,7 +32,7 @@
       }
 
       #site_header_link {
-        height: 100%;
+        height: inherit;
       }
       
       #site_header {
