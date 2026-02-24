@@ -1,30 +1,29 @@
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const navList = document.getElementById('nav-list');
+
+if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+        navList.classList.toggle('open');
+    });
+}
+
 const menuItems = document.querySelectorAll('.menu_item');
 const sections = document.querySelectorAll('.section');
 
 function activateSection(sectionId) {
     sections.forEach(section => {   
         section.classList.remove('active');
-        section.style.removeProperty('view-transition-name');
-
-        const matchingCard = document.getElementById(`${section.id}-card`);
-        if (matchingCard) {
-            matchingCard.style.setProperty('view-transition-name', section.id);
-        }
     });
 
     const targetSection = document.getElementById(sectionId);
     if (targetSection) {
         targetSection.classList.add('active');
-        
-        const targetCard = document.getElementById(`${sectionId}-card`);
-        if (targetCard) {
-            targetCard.style.removeProperty('view-transition-name');
-            targetSection.style.setProperty('view-transition-name', sectionId);
-        }
     }
 
     menuItems.forEach(item => {
-        if (item.dataset.section === sectionId || (sectionId !== 'home' && sectionId !== 'resume' && sectionId !== 'contact' && item.dataset.section === 'projects')) {
+        if (item.dataset.section === sectionId || 
+            (sectionId !== 'home' && sectionId !== 'resume' && sectionId !== 'contact' && 
+             item.dataset.section === 'projects')) {
             item.classList.add('active-nav'); 
         } else {
             item.classList.remove('active-nav');
@@ -40,15 +39,39 @@ menuItems.forEach(item => {
 });
 
 function handleHashChange() {
-    const sectionId = window.location.hash.substring(1) || 'home';
+    document.querySelectorAll('[style*="view-transition-name"]').forEach(el => {
+        el.style.removeProperty('view-transition-name');
+    });
 
-    if (!document.startViewTransition) {
+    const sectionId = window.location.hash.substring(1) || 'home';
+    
+    const currentActive = document.querySelector('.section.active');
+    const currentId = currentActive ? currentActive.id : null;
+
+    const isOpeningProject = currentId === 'projects' && document.getElementById(`${sectionId}-card`) !== null;
+    const isClosingProject = sectionId === 'projects' && document.getElementById(`${currentId}-card`) !== null;
+
+    if (!document.startViewTransition || (!isOpeningProject && !isClosingProject)) {
         activateSection(sectionId);
-        return;
+        return; 
     }
 
-    const transition = document.startViewTransition(() => {
+    if (isOpeningProject) {
+        document.getElementById(`${sectionId}-card`).style.setProperty('view-transition-name', sectionId);
+    } else if (isClosingProject) {
+        document.getElementById(currentId).style.setProperty('view-transition-name', currentId);
+    }
+
+    document.startViewTransition(() => {
         activateSection(sectionId);
+
+        if (isOpeningProject) {
+            document.getElementById(sectionId).style.setProperty('view-transition-name', sectionId);
+            document.getElementById(`${sectionId}-card`).style.removeProperty('view-transition-name');
+        } else if (isClosingProject) {
+            document.getElementById(`${currentId}-card`).style.setProperty('view-transition-name', currentId);
+            document.getElementById(currentId).style.removeProperty('view-transition-name');
+        }
     });
 }
 

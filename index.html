@@ -12,6 +12,7 @@
 
       html {
         -webkit-text-size-adjust: 100%;
+        view-transition-name: none;
       }
 
       body {
@@ -24,6 +25,7 @@
       }
       
       #site_header_container {
+        position: relative;
         height: min(6vh, 6vw);
         width: 100vw;
         display: flex;
@@ -32,14 +34,32 @@
         background-color: white;
         padding: 10px 0px;
       }
+
+      #site_header_link {
+        height: 100%;
+      }
       
       #site_header {
         height: 100%;
         width: 100%;
         object-fit: contain;
       }
+
+      #mobile-menu-btn {
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        right: 5vw;
+        font: 400 32px "Roboto";
+        display: none;
+        cursor: pointer;
+      }
+
+      #mobile-menu-btn:hover {
+        background-color: #e2e2e2;
+      }
       
-      nav ul { 
+      #nav-list { 
         list-style: none; 
         padding: 10px 10vw; 
         margin: 0;
@@ -258,6 +278,17 @@
         width: 10%;
       }
 
+      #contact-form textarea {
+        min-height: 300px; 
+        resize: vertical; 
+        overflow-y: scroll; 
+        font-family: 'Roboto';
+      }
+
+      #contact-form input, #contact-form button {
+        font-family: 'Roboto';
+      }
+
       @media (aspect-ratio < .75) {
         body {
           height: auto; 
@@ -304,17 +335,43 @@
         #wigglytuff {
           width: 20%;
         }
+
+        #mobile-menu-btn {
+          display: block;
+        }
+
+        #nav-list {
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 0;
+          gap: 15px;
+          width: 100%;
+          position: absolute; 
+          top: min(6vh, 6vw) + 54px; 
+          z-index: 50;
+          box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+        }
+
+        #nav-list.open {
+          display: flex;
+        }
       }
     </style>
   </head>
   <body>
 
     <div id="site_header_container">
-      <img id="site_header" src="images/site/jdc-title-img.svg" alt="jadendotcom"/>
+      <a href="#home" id="site_header_link">
+        <img id="site_header" src="images/site/jdc-title-img.svg" alt="jadendotcom"/>
+      </a>
+      <button id="mobile-menu-btn">☰</button>
     </div>
+
     
+
     <nav>
-      <ul>
+      <ul id="nav-list">
         <li class="menu_item" data-section="home">Home</li>
         <li class="menu_item" data-section="projects">Projects</li>
         <li class="menu_item" data-section="resume">Resume</li>
@@ -566,18 +623,18 @@
       
       <section id="contact" class="section">
         <form id="contact-form">
-          <input name="name" type="text" placeholder="Your Name" style="font-family:'Roboto';" required>
-          <input name="email" type="email" placeholder="Your Email" style="font-family:'Roboto';" required>
-          <input name="message_subject" type="message_subject" placeholder="Subject" style="font-family:'Roboto';" required>
-          <textarea name="message" placeholder="Your Message" style="font-family:'Roboto';" required></textarea>
+          <input name="name" type="text" placeholder="Your Name" required>
+          <input name="email" type="email" placeholder="Your Email" required>
+          <input name="message_subject" type="message_subject" placeholder="Subject" required>
+          <textarea name="message" placeholder="Your Message" required></textarea>
           <input name="subject" type="text" id="honeypot" style="display:none;">
-          <button type="submit" style="font-family:'Roboto';">Send Message</button>
+          <button type="submit">Send Message</button>
         </form>
         <p id="form-status"></p>
       </section>
       
     </main>
 
-    <script src="main.js"></script>
+    <script src="main.js?v=1.1"></script>
   </body>
 </html>
