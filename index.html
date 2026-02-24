@@ -10,6 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
 
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+
       body {
         width: 100vw;
         height: 100dvh;
@@ -63,28 +67,28 @@
         font-weight: 500;
       }
       
-     main { 
-      margin: 0;
-      display: flex;
-      flex-grow: 1;
-      justify-content: center;
-      align-items: center;
-      position: relative; 
-    }
+      main { 
+        margin: 0;
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+        position: relative; 
+      }
 
-    main::before {
-      content: "";
-      position: fixed; 
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100dvh; 
-      background-image: var(--bg-img); 
-      background-size: cover;
-      background-position: center bottom;
-      transition: background-image 2.0s ease-in-out;
-      z-index: -1; 
-    }
+      main::before {
+        content: "";
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100dvh; 
+        background-image: var(--bg-img); 
+        background-size: cover;
+        background-position: center bottom;
+        transition: background-image 2.0s ease-in-out;
+        z-index: -1; 
+      }
       
       .section {
         font-family: "Roboto";
@@ -108,6 +112,7 @@
       
       .section.active {
         display: block;
+        
       }
 
       #contact-form {
@@ -117,9 +122,6 @@
       }
 
       #projects {
-        position: relative;
-        overflow: hidden; 
-        overflow-y: auto; 
         padding: 20px; 
       }
 
@@ -128,7 +130,6 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
         width: 100%;
-        box-sizing: border-box;
       }
 
       .project-card {
@@ -138,64 +139,15 @@
         position: relative;
         cursor: pointer;
         overflow: hidden;
-        z-index: 1;
-        
-        transition: 
-          top 0.4s cubic-bezier(0.4, 0.0, 0.2, 1),
-          left 0.4s cubic-bezier(0.4, 0.0, 0.2, 1),
-          width 0.4s cubic-bezier(0.4, 0.0, 0.2, 1),
-          height 0.4s cubic-bezier(0.4, 0.0, 0.2, 1),
-          background-color 0.4s ease,
-          border-radius 0.4s ease;
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), box-shadow 0.4s ease;
       }
 
       .project-card:hover {
         transform: translateY(-4px);
         box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-      }
-
-      .project-card.is-animating {
-        position: absolute;
-        z-index: 20;
-        margin: 0;
-        transform: none !important;
-        box-shadow: none !important;
-      }
-
-      .project-card.expanded {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 20;
-        margin: 0;
-        border-radius: 32px;
-        background-color: white;
-        cursor: default;
-        transform: none;
-        overflow-y: auto; 
-      }
-
-      .project-card.is-animating .card-thumbnail,
-      .project-card.expanded .card-thumbnail {
-        opacity: 0;
-        transition: opacity 0.2s ease; 
-      }
-
-      .project-card.is-animating .card-details {
-        display: block;
-      }
-
-      .project-card.expanded .card-details {
-        display: block;
-        opacity: 1;
-      }
-
-      .project-card.placeholder {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
       }
 
       .card-thumbnail {
@@ -214,6 +166,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        background: rgba(0,0,0,0.3);
         color: white;
         transition: background 0.3s;
       }
@@ -224,22 +177,6 @@
         margin: 0;
       }
 
-      .project-card.expanded .card-thumbnail {
-        display: none;
-      }
-
-      .card-details {
-        display: none;
-        padding: 40px;
-        opacity: 0;
-        transition: opacity 0.2s ease 0.2s; 
-      }
-
-      .project-card.expanded .card-details {
-        display: block;
-        opacity: 1;
-      }
-
       .back-btn {
         background: transparent;
         border: 1px solid #333;
@@ -248,6 +185,9 @@
         font-family: 'Roboto';
         cursor: pointer;
         font-size: 16px;
+        text-decoration: none;
+        display: inline-block;
+        color: #333;
       }
 
       .back-btn:hover {
@@ -267,7 +207,6 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
         width: 100%;
-        box-sizing: border-box;
       }
 
       summary {
@@ -306,12 +245,8 @@
       }
 
       @keyframes scrollText {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(-100%);
-        }
+        from { transform: translateX(0); }
+        to { transform: translateX(-100%); }
       }
 
       #headshot {
@@ -324,7 +259,6 @@
       }
 
       @media (aspect-ratio < .75) {
-
         body {
           height: auto; 
           min-height: 100dvh; 
@@ -342,10 +276,6 @@
           height: auto; 
           max-height: none; 
           overflow: visible; 
-        }
-
-        .project-card.expanded {
-          aspect-ratio: auto;
         }
 
         .menu_item {
@@ -375,7 +305,6 @@
           width: 20%;
         }
       }
-
     </style>
   </head>
   <body>
@@ -411,7 +340,7 @@
           components, code, connections, and communities that make electronics tick.
         </p>
         <p>
-          I'm currently looking to transition these interests into a career in embedded software, 
+          I'm currently looking to transition these interests into a career as an embedded firmware engineer, 
           where I can focus on building well-documented systems designed with the user's experience 
           at the forefront. <b>Ultimately, I believe that good technology should be as intuitive as it is functional.</b>
         </p>
@@ -421,194 +350,189 @@
       </section>
       
       <section id="projects" class="section">
-      <div class="projects-grid">
-
-        <article class="project-card" id="hci-pcb">
-          <div class="card-thumbnail" style="background-image: url('images/projects/thumbnails/hci-pcb.gif');">
-            <div class="thumbnail-overlay">
-              <h3>Interactive PCB</h3>
-            </div>
-          </div>
-
-          <div class="card-details">
-            <button class="back-btn" type="button">← Back to Projects</button>
-            <div class="scrolling-container">
-              <span class="scrolling-text">WARNING: THIS ARTICLE IS STILL UNDER CONSTRUCTION</span>
-            </div>
-            <div class="details-content">
-              <h2>Custom PCB for Interactive Haptic Device</h2>
-              <div class="proj-img-grid">
-                <img src="images/projects/hci-pcb/pcb-front-with_screen.jpg" 
-                  alt="The front of a custom circuit board in the shape of a circle. It has a circular screen in the middle." 
-                  class="proj-img">
-                <img src="images/projects/hci-pcb/pcb-kicad.png" alt="" class="proj-img">
-                <img src="images/projects/hci-pcb/presentation2.jpg" alt="" class="proj-img">
-                <img src="images/projects/hci-pcb/pcb-back.jpg" 
-                      alt="The back of a custom circuit board in the shape of a circle. An LRA motor is attached with Kapton tape."
-                      class="proj-img">
+        <div class="projects-grid">
+          <a href="#hci-pcb" id="hci-pcb-card" class="project-card" style="view-transition-name: hci-pcb;">
+            <div class="card-thumbnail" style="background-image: url('images/projects/thumbnails/hci-pcb.gif');">
+              <div class="thumbnail-overlay">
+                <h3>Interactive PCB</h3>
               </div>
-              <p>
-                The goal for this project was to design and build a custom PCB with three inputs and
-                outputs using an SAMD21 as the microcontroller and a USB-C port for data and power. 
-                Furthermore, my professor would only spend $15 on new components (keyword: 
-                <i>new</i>). I was dead set on the idea of making a circular PCB, so the rest of the
-                design was decided with this in mind, including my decision to use my own money on 
-                <a href="https://www.adafruit.com/product/6178" target="_blank">this beautiful 
-                round TFT LCD </a> for the aesthetics, but a cheap $1, 128x128 OLED would have 
-                sufficed.
-              </p>
-              <p>
-                The final product features 16 white LEDs controlled by a 16-channel I<sup>2</sup>C
-                LED driver, a 6-axis I<sup>2</sup>C IMU, a Linear Resonant Actuator controlled by an
-                I<sup>2</sup>C haptic driver, the aformentioned 240x240 round TFT display controlled
-                over SPI by a built-in display driver (it also has a built-in microSD card reader), 
-                a capacitive touch scroll wheel, an ambient light sensor, and a battery management 
-                system with power path control. I also went a little heavy on the silkscreen decals, 
-                but I think it looks pretty cool.
-              </p>
-              <p>
-                I coded the firmware in C++. Here is a video demoing the hardware's capabilities:
-              </p>
-              <iframe width="100%" height="auto"
-                      src="https://www.youtube.com/embed/k2hIUa6wBeQ?si=_qi70W3vbH4RGYAV" 
-                      title="YouTube video player" frameborder="0" 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen 
-                      style="border: none; border-radius: 20px; box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25); aspect-ratio: 16 / 9;"></iframe>
-              <h3>Schematic</h3>
-                <p>
-                  You can find a PDF of the schematic 
-                  <a href="files/projects/hci-pcb/Jaden-Hamilton-HCI-PCB-Schematic.pdf" target="_blank">here</a>.
-                  The sections below provide a deeper look into each component.
-                </p>
-              <details>
-                <summary>SAMD21</summary>
-              </details>
-              <details>
-                <summary>LED Driver</summary>
-              </details>
-              <details>
-                <summary>6-Axis IMU</summary>
-              </details>
-              <details>
-                <summary>Haptic Motor Driver</summary>
-              </details>
-              <details>
-                <summary>TFT Display</summary>
-              </details>
-              <details>
-                <summary>Capacitive Touch Scroll Wheel</summary>
-              </details>
-              <details>
-                <summary>Ambient Light Sensor</summary>
-                <p>this is the section about the ambient light sensor</p>
-              </details>
-              <details>
-                <summary>Battery Management System</summary>
-                <p>
-                  I further challenged myself by implementing a power management system for a 3.7V 
-                  LiPo battery, which was supplied by the maker's space I worked at on campus (i.e. $0
-                  towards the budget). This system automatically switches between USB-C and the 
-                  battery, as well as charges the battery. While simply routing the 5V from the USB-C 
-                  through the voltage regulator would technically be sufficient, I really wanted this 
-                  to be a true handheld device. My friend, Alec, and I collobarated on this aspect of the design.
-                  After days of staring at datasheets, here's what we came up with:
-                </p>
-                <h4>Automatic Power Source Detection</h4>
-                <img src="images/projects/hci-pcb/power-source-switching.png" 
-                    alt="A schematic diagram detailing the power source switching mechanism." 
-                    class="proj-img">
-                <p>
-                  The <a href="files/projects/hci-pcb/lm66100.pdf" target="_blank">LM66100</a> is an ideal 
-                  diode IC. The USB-C's 5V is connected to <b>V</b>oltage <b>IN</b>, while the LiPo 
-                  battery's 3.7V is connected to <b>C</b>hip <b>E</b>nable. When the voltage at CE is
-                  higher than VIN (e.g. when USB-C is disconnected and VIN reads 0V), then the IC is 
-                  disabled and its internal MOSFET is off, so <b>V</b>oltage <b>OUT</b> outputs 0V. 
-                  This also causes <b>ST</b>atus output to be pulled low, which allows us to use it to
-                  turn on the gate of an external P-MOSFET. When the device is enabled, ST will be 
-                  Hi-Z, so the P-MOSFET's gate will be pulled high throught the pullup resistor, 
-                  turning it off. The IC's VOUT and the P-MOSFET's drain are then connected and passed
-                  on to the voltage regulator.
-                </p>
-                <p>
-                  In summary, when USB-C is available, the IC is enabled and the P-MOSFET is turned 
-                  off, blocking the 3.7V, and 5V from VOUT is fed to the voltage regulator. When USB-C
-                  is disconnected, the IC is disabled and the P-MOSFET is turned on, allowing the 3.7V
-                  to be fed to the voltage regulator.
-                </p>
-                <p>
-                  Could we have just used Schottky diode ORing to basically achieve the same result? 
-                  Yes, but this design is safer and more efficient since it wastes a negligible amount
-                  of power, isn't prone to overheating, and has incredibly minimized reverse-current 
-                  leakage. This is especially important when using batteries, as we didn't want the
-                  battery to still be discharging while the device was being powered by USB-C.
-                </p>
-                <h4>DPDT Switch</h4>
-                <img src="images/projects/hci-pcb/power-switch.png" 
-                    alt="A schematic diagram detailing a DTDP swtich." 
-                    class="proj-img">
-                <p>
-                  The voltages from the USB-C port, +USBV, and the LiPo battery, +VBAT, first went 
-                  through this power switch outputting 5V and 3.7V respectively.
-                  <a href="files/projects/hci-pcb/slw-1678105-6a-n-d.pdf" target="_blank">This specific switch</a> 
-                  is rated for 1A of current, which I chose as a safety precaution since my board 
-                  uses 16 LEDs and a TFT display.
-                </p>
-                <h4>Battery Charging</h4>
-                <img src="images/projects/hci-pcb/battery-charging.png" 
-                    alt="A schematic diagram detailing the battery charging IC." 
-                    class="proj-img">
-                <p>
-                  The <a href="files/projects/hci-pcb/mcp73831.pdf" target="_blank">MCP73831</a> is a linear
-                  charge managment controller for single-cell Li-ion and LiPo batteries. The USB-C's
-                  5V is connected to VDD, the battery's positive terminal is connected to VBAT, and
-                  VSS is tied to the shared ground between both voltage sources. While the battery is 
-                  charging, STAT is pulled low, completing the circuit for the orange LED, thus
-                  indicating to the user that the battery is actively charging. Note that the labels
-                  for the USB-C and battery's voltages are +USBV and +VBAT, not +5V and +3.7V that are 
-                  outputted by the DPDT switch. This ensures that the device does not need to be on to
-                  charge the battery.
-                </p>
-              </details>        
+            </div>
+          </a>
+
+          <a href="#simon-says" id="simon-says-card" class="project-card" style="view-transition-name: simon-says;">
+            <div class="card-thumbnail" style="background-image: url('/images/projects/thumbnails/under-construction.gif');"> 
+              <div class="thumbnail-overlay">
+                <h3>Simon Says</h3>
               </div>
-          </div>
-        </article>
+            </div>
+          </a>
 
-        <article class="project-card" id="simon-says">
-          <div class="card-thumbnail" style="background-image: url('/images/projects/thumbnails/under-construction.gif');"> 
-            <div class="thumbnail-overlay">
-              <h3>Simon Says</h3>
+          <a href="#led-matrix" id="led-matrix-card" class="project-card" style="view-transition-name: led-matrix;">
+            <div class="card-thumbnail" style="background-image: url('images/projects/thumbnails/under-construction.gif');">
+              <div class="thumbnail-overlay">
+                <h3>LED Matrix</h3>
+              </div>
             </div>
-          </div>
+          </a>
+        </div>
+      </section>
 
-          <div class="card-details">
-            <button class="back-btn" type="button">← Back to Projects</button>
-            <div class="scrolling-container">
-              <span class="scrolling-text">WARNING: THIS ARTICLE IS STILL UNDER CONSTRUCTION</span>
-            </div>
-            <div class="details-content">
-              <h2>Simon Says Game (plus MP3 player)</h2>
-            </div>
-          </div>
-        </article>
+      <section id="hci-pcb" class="section project">
+        <a href="#projects" class="back-btn">← Back to Projects</a>
+        <div class="scrolling-container">
+          <span class="scrolling-text">WARNING: THIS ARTICLE IS STILL UNDER CONSTRUCTION</span>
+        </div>
+        <h2>Custom PCB for Interactive Haptic Device</h2>
+        <div class="proj-img-grid">
+          <img src="images/projects/hci-pcb/pcb-front-with_screen.jpg" 
+            alt="The front of a custom circuit board in the shape of a circle. It has a circular screen in the middle." 
+            class="proj-img">
+          <img src="images/projects/hci-pcb/pcb-kicad.png" alt="" class="proj-img">
+          <img src="images/projects/hci-pcb/presentation2.jpg" alt="" class="proj-img">
+          <img src="images/projects/hci-pcb/pcb-back.jpg" 
+                alt="The back of a custom circuit board in the shape of a circle. An LRA motor is attached with Kapton tape."
+                class="proj-img">
+        </div>
+        <p>
+          The goal for this project was to design and build a custom PCB with three inputs and
+          outputs using an SAMD21 as the microcontroller and a USB-C port for data and power. 
+          Furthermore, my professor would only spend $15 on new components (keyword: 
+          <i>new</i>). I was dead set on the idea of making a circular PCB, so the rest of the
+          design was decided with this in mind, including my decision to use my own money on 
+          <a href="https://www.adafruit.com/product/6178" target="_blank">this beautiful 
+          round TFT LCD </a> for the aesthetics, but a cheap $1, 128x128 OLED would have 
+          sufficed.
+        </p>
+        <p>
+          The final product features 16 white LEDs controlled by a 16-channel I<sup>2</sup>C
+          LED driver, a 6-axis I<sup>2</sup>C IMU, a Linear Resonant Actuator controlled by an
+          I<sup>2</sup>C haptic driver, the aformentioned 240x240 round TFT display controlled
+          over SPI by a built-in display driver (it also has a built-in microSD card reader), 
+          a capacitive touch scroll wheel, an ambient light sensor, and a battery management 
+          system with power path control. I also went a little heavy on the silkscreen decals, 
+          but I think it looks pretty cool.
+        </p>
+        <p>
+          I coded the firmware in C++. Here is a video demoing the hardware's capabilities:
+        </p>
+        <iframe width="100%" height="auto"
+                src="https://www.youtube.com/embed/k2hIUa6wBeQ?si=_qi70W3vbH4RGYAV" 
+                title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen 
+                style="border: none; border-radius: 20px; box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25); aspect-ratio: 16 / 9;"></iframe>
+        <h3>Schematic</h3>
+          <p>
+            You can find a PDF of the schematic 
+            <a href="files/projects/hci-pcb/Jaden-Hamilton-HCI-PCB-Schematic.pdf" target="_blank">here</a>.
+            The sections below provide a deeper look into each component.
+          </p>
+        <details>
+          <summary>SAMD21</summary>
+        </details>
+        <details>
+          <summary>LED Driver</summary>
+        </details>
+        <details>
+          <summary>6-Axis IMU</summary>
+        </details>
+        <details>
+          <summary>Haptic Motor Driver</summary>
+        </details>
+        <details>
+          <summary>TFT Display</summary>
+        </details>
+        <details>
+          <summary>Capacitive Touch Scroll Wheel</summary>
+        </details>
+        <details>
+          <summary>Ambient Light Sensor</summary>
+          <p>this is the section about the ambient light sensor</p>
+        </details>
+        <details>
+          <summary>Battery Management System</summary>
+          <p>
+            I further challenged myself by implementing a power management system for a 3.7V 
+            LiPo battery, which was supplied by the maker's space I worked at on campus (i.e. $0
+            towards the budget). This system automatically switches between USB-C and the 
+            battery, as well as charges the battery. While simply routing the 5V from the USB-C 
+            through the voltage regulator would technically be sufficient, I really wanted this 
+            to be a true handheld device. My friend, Alec, and I collobarated on this aspect of the design.
+            After days of staring at datasheets, here's what we came up with:
+          </p>
+          <h4>Automatic Power Source Detection</h4>
+          <img src="images/projects/hci-pcb/power-source-switching.png" 
+              alt="A schematic diagram detailing the power source switching mechanism." 
+              class="proj-img">
+          <p>
+            The <a href="files/projects/hci-pcb/lm66100.pdf" target="_blank">LM66100</a> is an ideal 
+            diode IC. The USB-C's 5V is connected to <b>V</b>oltage <b>IN</b>, while the LiPo 
+            battery's 3.7V is connected to <b>C</b>hip <b>E</b>nable. When the voltage at CE is
+            higher than VIN (e.g. when USB-C is disconnected and VIN reads 0V), then the IC is 
+            disabled and its internal MOSFET is off, so <b>V</b>oltage <b>OUT</b> outputs 0V. 
+            This also causes <b>ST</b>atus output to be pulled low, which allows us to use it to
+            turn on the gate of an external P-MOSFET. When the device is enabled, ST will be 
+            Hi-Z, so the P-MOSFET's gate will be pulled high throught the pullup resistor, 
+            turning it off. The IC's VOUT and the P-MOSFET's drain are then connected and passed
+            on to the voltage regulator.
+          </p>
+          <p>
+            In summary, when USB-C is available, the IC is enabled and the P-MOSFET is turned 
+            off, blocking the 3.7V, and 5V from VOUT is fed to the voltage regulator. When USB-C
+            is disconnected, the IC is disabled and the P-MOSFET is turned on, allowing the 3.7V
+            to be fed to the voltage regulator.
+          </p>
+          <p>
+            Could we have just used Schottky diode ORing to basically achieve the same result? 
+            Yes, but this design is safer and more efficient since it wastes a negligible amount
+            of power, isn't prone to overheating, and has incredibly minimized reverse-current 
+            leakage. This is especially important when using batteries, as we didn't want the
+            battery to still be discharging while the device was being powered by USB-C.
+          </p>
+          <h4>DPDT Switch</h4>
+          <img src="images/projects/hci-pcb/power-switch.png" 
+              alt="A schematic diagram detailing a DTDP swtich." 
+              class="proj-img">
+          <p>
+            The voltages from the USB-C port, +USBV, and the LiPo battery, +VBAT, first went 
+            through this power switch outputting 5V and 3.7V respectively.
+            <a href="files/projects/hci-pcb/slw-1678105-6a-n-d.pdf" target="_blank">This specific switch</a> 
+            is rated for 1A of current, which I chose as a safety precaution since my board 
+            uses 16 LEDs and a TFT display.
+          </p>
+          <h4>Battery Charging</h4>
+          <img src="images/projects/hci-pcb/battery-charging.png" 
+              alt="A schematic diagram detailing the battery charging IC." 
+              class="proj-img">
+          <p>
+            The <a href="files/projects/hci-pcb/mcp73831.pdf" target="_blank">MCP73831</a> is a linear
+            charge managment controller for single-cell Li-ion and LiPo batteries. The USB-C's
+            5V is connected to VDD, the battery's positive terminal is connected to VBAT, and
+            VSS is tied to the shared ground between both voltage sources. While the battery is 
+            charging, STAT is pulled low, completing the circuit for the orange LED, thus
+            indicating to the user that the battery is actively charging. Note that the labels
+            for the USB-C and battery's voltages are +USBV and +VBAT, not +5V and +3.7V that are 
+            outputted by the DPDT switch. This ensures that the device does not need to be on to
+            charge the battery.
+          </p>
+        </details>        
+      </section>
 
-        <article class="project-card">
-          <div class="card-thumbnail" style="background-image: url('images/projects/thumbnails/under-construction.gif');">
-            <div class="thumbnail-overlay">
-              <h3>LED Matrix</h3>
-            </div>
-          </div>
-          <div class="card-details">
-            <button class="back-btn" type="button">← Back</button>
-            <div class="scrolling-container">
-              <span class="scrolling-text">WARNING: THIS ARTICLE IS STILL UNDER CONSTRUCTION</span>
-            </div>
-            <h2>Valentine's Day LED Matrix</h2>
-          </div>
-        </article>
+      <section id="simon-says" class="section project">
+        <a href="#projects" class="back-btn">← Back to Projects</a>
+        <div class="scrolling-container">
+          <span class="scrolling-text">WARNING: THIS ARTICLE IS STILL UNDER CONSTRUCTION</span>
+        </div>
+        <h2>Simon Says Game (plus MP3 player)</h2>
+      </section>
 
-      </div>
-    </section>
+      <section id="led-matrix" class="section project">
+        <a href="#projects" class="back-btn">← Back to Projects</a>
+        <div class="scrolling-container">
+          <span class="scrolling-text">WARNING: THIS ARTICLE IS STILL UNDER CONSTRUCTION</span>
+        </div>
+        <h2>Valentine's Day LED Matrix</h2>
+      </section>
       
       <section id="resume" class="section">
         <div class="projects-grid">
