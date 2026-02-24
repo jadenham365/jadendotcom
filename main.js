@@ -29,6 +29,11 @@ function activateSection(sectionId) {
             item.classList.remove('active-nav');
         }
     });
+
+    if (navList.classList.contains('open')) {
+        navList.classList.toggle('open');
+
+    }
 }
 
 menuItems.forEach(item => {
